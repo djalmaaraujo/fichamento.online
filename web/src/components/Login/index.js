@@ -49,7 +49,7 @@ class Login extends Component {
     setTimeout(() => {
       const status = Auth.isLogged();
 
-      this.setState({ logged: status });
+      this.setState({ logged: status, show: (!status) ? true : false });
     }, 1000)
   }
 
@@ -57,6 +57,8 @@ class Login extends Component {
     if (this.state.logged) {
       return (<Redirect to={{pathname: '/fichamentos'}}/>);
     }
+
+    if (!this.state.show) return null;
 
     return (
       <div className="Login text-center">
