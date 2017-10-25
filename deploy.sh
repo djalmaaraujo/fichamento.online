@@ -3,6 +3,7 @@
 clear
 
 GREEN='\033[0;32m'
+NC='\033[0m' # No Color
 
 echo -e "${GREEN} #########################\n"
 echo -e "${GREEN}   Deploy process started \n"
@@ -27,4 +28,4 @@ we deploy -p fichamento
 
 echo -e "${GREEN} #########################\n"
 echo -e "${GREEN}  Deploy process finished \n"
-echo -e "${GREEN} #########################\n"
+echo -e "${GREEN} #########################\n${NC}"
