@@ -1,0 +1,5 @@
+{
+  "id": "web",
+  "image": "wedeploy/hosting:latest",
+  "customDomains": ["fichamento.online", "www.fichamento.online"]
+}

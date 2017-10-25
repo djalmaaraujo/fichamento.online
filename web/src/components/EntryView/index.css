@@ -1,0 +1,16 @@
+.table {
+  border-collapse:separate;
+  border-spacing: 0 4rem;
+}
+
+.table tr > td:first-child {
+  vertical-align: top;
+  width: 12rem;
+  padding-top: 2rem;
+  padding-right: 1rem;
+  font-weight: 700;
+}
+
+.table tr {
+  padding-bottom: 5rem;
+}
