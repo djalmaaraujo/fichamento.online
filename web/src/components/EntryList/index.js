@@ -47,10 +47,10 @@ class EntryList extends Component {
 
     return (
       <div>
-        { !hasNoEntries && <p className="text-center">Listando <strong>{this.state.entries.length}</strong> fichamento(s)</p> }
+        { !this.state.entries && <Spinner /> }
+        { this.state.entries && <p className="text-center">Listando <strong>{this.state.entries.length}</strong> fichamento(s)</p> }
         <div className="card__content">
           { this.state.entries && this.state.entries.map(this._renderEntry) }
-          { !this.state.entries && <Spinner /> }
           { (hasNoEntries) && <NoEntriesFound _newEntry={this._newEntry.bind(this)} />}
         </div>
       </div>

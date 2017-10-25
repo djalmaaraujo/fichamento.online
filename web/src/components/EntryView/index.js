@@ -7,6 +7,7 @@ import './index.css';
 import Auth from '../../utils/Auth';
 import ApiService from '../../utils/ApiService';
 import Fields from '../../utils/Fields';
+import Spinner from '../Spinner'
 
 class EntryView extends Component {
   state = { entry: {}, loaded: false }
@@ -36,6 +37,9 @@ class EntryView extends Component {
 
     if (this.state.redirectTo)
       return (<Redirect to={{ pathname: this.state.redirectTo }}/>);
+
+    if (!this.state.loaded)
+      return <Spinner />
 
     return (
       <section className="card card--primary card--example">

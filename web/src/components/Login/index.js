@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 
 import './index.css';
 import Auth from '../../utils/Auth';
+import Spinner from '../Spinner'
 
 class Login extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class Login extends Component {
       return (<Redirect to={{pathname: '/fichamentos'}}/>);
     }
 
-    if (!this.state.show) return null;
+    if (!this.state.show) return <Spinner />;
 
     return (
       <div className="Login text-center">
