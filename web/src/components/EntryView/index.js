@@ -82,17 +82,17 @@ class EntryView extends Component {
 
           <hr />
           <h5>Meus Comentários</h5>
-          <td>{ (entry.hasOwnProperty('my_comments')) ? entry['my_comments'] : '' }</td>
+          <p>{ (entry.hasOwnProperty('my_comments')) ? entry['my_comments'] : '' }</p>
 
           <br />
 
           <hr />
           <h5>Resultados / Considerações Finais</h5>
-          <td>{ (entry.hasOwnProperty('results')) ? entry['results'] : '' }</td>
+          <p>{ (entry.hasOwnProperty('results')) ? entry['results'] : '' }</p>
 
           <hr />
 
-          <blockquote class="blockquote--primary backquote--bg"><p><em>Este fichamento foi criado por Rarissa Lira em 27/08/2017.</em></p></blockquote>
+          <blockquote className="blockquote--primary backquote--bg"><p><em>Este fichamento foi criado por Rarissa Lira em 27/08/2017.</em></p></blockquote>
 
           <p>Link direto: <a href="https://fichamento.online/1234">https://fichamento.online/1234</a></p>
 

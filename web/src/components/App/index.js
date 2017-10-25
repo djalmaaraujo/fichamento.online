@@ -1,24 +1,22 @@
 import React from 'react';
+
 import {
-  BrowserRouter as Router,
-  Route
+  BrowserRouter as Router
 } from 'react-router-dom'
 
-import Login from '../Login';
-import Logout from '../Logout';
-import EntryList from '../EntryList';
-import EntryView from '../EntryView';
+// Compoment
+import Header from '../Header';
+import Main from '../Main';
+import Footer from '../Footer';
 
 import './index.css';
 
 const App = () => (
   <Router>
     <div>
-      <Route exact path="/" component={Login}/>
-      <Route exact path="/auth" component={Login}/>
-      <Route exact path="/fichamentos" component={EntryList}/>
-      <Route exact path="/fichamentos/:id" component={EntryView}/>
-      <Route exact path="/logout" component={Logout}/>
+      <Header />
+      <Main />
+      <Footer />
     </div>
   </Router>
 )

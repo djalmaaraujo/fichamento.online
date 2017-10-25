@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 2rem 0;
+}
+
+.header__item {
+  flex: 1;
+}
+
+.header__item:last-child {
+  text-align: right;
+}
+
+.header__item a {
+  margin-left: 2rem;
+  color: #28a745;
+  font-weight: 700;
+  text-decoration: underline;
+}

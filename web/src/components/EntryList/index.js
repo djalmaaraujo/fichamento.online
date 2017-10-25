@@ -1,26 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   Redirect
 } from 'react-router-dom'
 
-import './index.css';
-import Auth from '../../utils/Auth';
-import ApiService from '../../utils/ApiService';
-import Spinner from '../Spinner';
-import Entry from '../Entry';
-import NoEntriesFound from '../NoEntriesFound';
+import './index.css'
+import ApiService from '../../utils/ApiService'
+import Spinner from '../Spinner'
+import Entry from '../Entry'
+import NoEntriesFound from '../NoEntriesFound'
 
 class EntryList extends Component {
   state = { entries: false, loaded: false }
 
   componentWillMount() {
-    if (!Auth.isLogged()) {
-      return this.setState({ redirectTo: '/' });
-    }
-
-    ApiService.search().then((results) => {
-      this.setState({entries: results, loaded: true})
-    })
+    ApiService.search()
+      .then((results) => {
+        this.setState({entries: results, loaded: true})
+      }).catch((error) => {
+        return this.setState({ redirectTo: '/' })
+      })
   }
 
   _newEntry() {
@@ -45,7 +43,7 @@ class EntryList extends Component {
     const hasNoEntries = (this.state.loaded && this.state.entries.length === 0)
 
     if (this.state.redirectTo)
-      return (<Redirect to={{ pathname: this.state.redirectTo }}/>);
+      return (<Redirect to={{ pathname: this.state.redirectTo }}/>)
 
     return (
       <div>
@@ -56,8 +54,8 @@ class EntryList extends Component {
           { (hasNoEntries) && <NoEntriesFound _newEntry={this._newEntry.bind(this)} />}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default EntryList;
+export default EntryList

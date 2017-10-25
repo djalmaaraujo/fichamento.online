@@ -25,19 +25,10 @@ a {
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
-  height: 100%;
-  max-width: 80rem;
   margin: 0 auto;
   padding-bottom: 2.5rem;
   padding-top: 2.5rem;
-}
-
-.container > div {
-  flex: 1;
+  max-width: 80rem;
 }
 
 .text-center {
