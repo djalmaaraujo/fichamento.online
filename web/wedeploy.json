@@ -1,5 +1,7 @@
 {
   "id": "web",
   "image": "wedeploy/hosting:latest",
-  "customDomains": ["www.fichamento.online"]
+  "customDomains": ["www.fichamento.online"],
+  "cpu": 0.2,
+  "memory": 100
 }

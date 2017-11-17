@@ -1,0 +1,39 @@
+* {
+  box-shadow: none;
+}
+
+label {
+  display: block;
+  font-size: 1.5rem;
+}
+
+label input,
+label select,
+label textarea {
+  display: block;
+  margin-bottom: 1rem;
+  border: .1rem solid #eee;
+  padding: 1rem 1rem;
+  width: 100%;
+  outline: none;
+  line-height: 1rem;
+  background-color: white;
+}
+
+label textarea {
+  min-height: 15rem;
+}
+
+fieldset {
+  border: .1rem solid #eee;
+  margin-bottom: 2rem;
+}
+
+fieldset legend {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+button {
+  margin-right: 2rem;
+}

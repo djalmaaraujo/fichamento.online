@@ -4,18 +4,23 @@ import { Redirect } from 'react-router-dom'
 import Auth from '../../utils/Auth'
 
 class Logout extends Component {
-  state = {to: false}
+  state = {redirect: false}
 
   componentWillMount() {
     try {
-      Auth.logout()
+      Auth.logout().then(() => {
+        this.setState({redirect: true})
+      })
     } catch (e) {
       console.log(e)
     }
   }
 
   render() {
-    return <Redirect to={{pathname: '/'}} />
+    if (this.state.redirect)
+      return <Redirect to={{pathname: '/'}} />
+
+    return null
   }
 }
 
