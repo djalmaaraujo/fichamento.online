@@ -9,6 +9,11 @@ This project uses wedeploy.com as a hosting solution.
 - Wanna help? Open an issue.
 - How to setup, everything else? This project is using [https://github.com/facebookincubator/create-react-app](https://github.com/facebookincubator/create-react-app). You can setup, read how to contribute and everything else there. I will be updating this README with more useful instructions.
 
+## Setup
+1. Clone
+2. `chmod +x deploy.sh`
+3. `yarn start`
+
 ## Run
 
 ```bash
@@ -26,7 +31,6 @@ yarn build
 ## Deploy
 
 ```bash
-chmod +x deploy.sh # One time only
 ./deploy.sh
 ```
 

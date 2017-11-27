@@ -34,6 +34,16 @@ const ApiService = {
         .then((entry) => resolve(entry))
         .catch((error) => reject(new Error('no user found')))
     })
+  },
+
+  deleteEntry(entry) {
+    return new Promise((resolve, reject) => {
+      if (!WeDeployClient.currentUser || (entry.user_id !== WeDeployClient.currentUser.id)) {
+        return reject(new Error('invalid session'))
+      }
+
+      WeDeployDataClient.delete(`entries/${entry.id}`)
+    })
   }
 }
 
