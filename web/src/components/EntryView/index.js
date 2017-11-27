@@ -12,7 +12,7 @@ import Spinner from '../Spinner'
 import EntryControls from '../EntryControls'
 
 class EntryView extends Component {
-  state = { entry: {}, loaded: false }
+  state = { entry: {}, entryUser: {}, loaded: false }
 
   componentWillMount() {
     if (!Auth.isLogged()) {
@@ -28,8 +28,11 @@ class EntryView extends Component {
         return this.setState({redirectTo: '/'})
       }
 
+      Auth.getEntryUser(entry.user_id).then((user) => {
+        entry.user = user
 
-      this.setState({entry: entry, loaded: true})
+        this.setState({entry: entry, loaded: true})
+      })
     })
   }
 
@@ -43,8 +46,6 @@ class EntryView extends Component {
 
   _renderDate(time) {
     if (!time) return ''
-
-    console.log(time)
 
     return new Date(time).toISOString()
   }
@@ -113,9 +114,9 @@ class EntryView extends Component {
 
           <hr />
 
-          <blockquote className="blockquote--primary backquote--bg"><p><em>Este fichamento foi criado por Rarissa Lira em { this._renderDate(entry.created_at) }.</em></p></blockquote>
+          <blockquote className="blockquote--primary backquote--bg"><p><em>Este fichamento foi criado por { this.state.entry.user && this.state.entry.user.name } em { this._renderDate(entry.created_at) }.</em></p></blockquote>
 
-          <p>Link direto: <a href={`https://fichamento.online/fichamentos/${entry.id}`}>https://fichamento.online/fichamentos/{ entry.id }</a></p>
+          <p>Link direto: <a href={`https://www.fichamento.online/fichamentos/${entry.id}`}>https://fichamento.online/fichamentos/{ entry.id }</a></p>
         </div>
 
         <EntryControls entry={entry} />

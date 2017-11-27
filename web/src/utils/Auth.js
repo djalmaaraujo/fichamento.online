@@ -11,13 +11,16 @@ const Auth = {
   },
 
   login(params) {
-    console.log(params)
     localStorage.setItem('pnp_auth_token', params.access_token)
     localStorage.setItem('pnp_auth_params', JSON.stringify(params))
   },
 
   me() {
     return JSON.parse(localStorage.getItem('pnp_auth_params')) || {}
+  },
+
+  getEntryUser(userId) {
+    return WeDeployClient.getUser(userId)
   },
 
   token() {
