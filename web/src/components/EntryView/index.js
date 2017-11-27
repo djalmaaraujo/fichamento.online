@@ -116,7 +116,7 @@ class EntryView extends Component {
 
           <blockquote className="blockquote--primary backquote--bg"><p><em>Este fichamento foi criado por { this.state.entry.user && this.state.entry.user.name } em { this._renderDate(entry.created_at) }.</em></p></blockquote>
 
-          <p>Link direto: <a href={`https://www.fichamento.online/fichamentos/${entry.id}`}>https://fichamento.online/fichamentos/{ entry.id }</a></p>
+          <p>Link direto: <a href={`https://www.fichamento.online/fichamentos/${entry.id}`}>https://www.fichamento.online/fichamentos/{ entry.id }</a></p>
         </div>
 
         <EntryControls entry={entry} />
