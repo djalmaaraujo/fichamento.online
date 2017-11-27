@@ -74,12 +74,12 @@ class Login extends Component {
 
         &nbsp;
 
-        <button
+        { false && <button
           type="button"
           className="button button--ok button--facebook"
           onClick={this._requestLogin.bind(this)}>
           Autenticar com Facebook
-        </button>
+        </button> }
       </div>
     );
   }
