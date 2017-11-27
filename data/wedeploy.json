@@ -1,0 +1,6 @@
+{
+  "id": "data",
+  "image": "wedeploy/data:2.0.0",
+  "cpu": 1,
+  "memory": 1000
+}

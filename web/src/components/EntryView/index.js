@@ -7,7 +7,9 @@ import './index.css';
 import Auth from '../../utils/Auth';
 import ApiService from '../../utils/ApiService';
 import Fields from '../../utils/Fields';
+
 import Spinner from '../Spinner'
+import EntryControls from '../EntryControls'
 
 class EntryView extends Component {
   state = { entry: {}, loaded: false }
@@ -20,7 +22,14 @@ class EntryView extends Component {
     const id = this.props.match.params.id
 
     ApiService.search().then((results) => {
-      this.setState({entry: results[id], loaded: true})
+      const entry = results.find((item) => item.id.toString() === id.toString())
+
+      if (!entry) {
+        return this.setState({redirectTo: '/'})
+      }
+
+
+      this.setState({entry: entry, loaded: true})
     })
   }
 
@@ -30,6 +39,14 @@ class EntryView extends Component {
     return (
       <li key={i}><strong>{ Fields.common[key] }:</strong> { entry[key] }</li>
     )
+  }
+
+  _renderDate(time) {
+    if (!time) return ''
+
+    console.log(time)
+
+    return new Date(time).toISOString()
   }
 
   render() {
@@ -66,18 +83,18 @@ class EntryView extends Component {
             <tbody>
               <tr>
                 <td>Amostra</td>
-                <td>{ (entry.methodology && entry.methodology.hasOwnProperty('sample')) ? entry.methodology['sample'] : '' }</td>
+                <td>{ entry.methodology_sample ? entry.methodology_sample : '' }</td>
               </tr>
 
               <tr>
                 <td>Instrumento de Coleta de dados</td>
-                <td>{ (entry.methodology && entry.methodology.hasOwnProperty('data_collect')) ? entry.methodology['data_collect'] : '' }</td>
+                <td>{ entry.methodology_data_collect ? entry.methodology_data_collect : '' }</td>
               </tr>
 
 
               <tr>
                 <td>Análise dos dados</td>
-                <td>{ (entry.methodology && entry.methodology.hasOwnProperty('data_analysis')) ? entry.methodology['data_analysis'] : '' }</td>
+                <td>{ entry.methodology_data_analysis ? entry.methodology_data_analysis : '' }</td>
               </tr>
             </tbody>
           </table>
@@ -96,11 +113,12 @@ class EntryView extends Component {
 
           <hr />
 
-          <blockquote className="blockquote--primary backquote--bg"><p><em>Este fichamento foi criado por Rarissa Lira em 27/08/2017.</em></p></blockquote>
+          <blockquote className="blockquote--primary backquote--bg"><p><em>Este fichamento foi criado por Rarissa Lira em { this._renderDate(entry.created_at) }.</em></p></blockquote>
 
-          <p>Link direto: <a href="https://fichamento.online/1234">https://fichamento.online/1234</a></p>
-
+          <p>Link direto: <a href={`https://fichamento.online/fichamentos/${entry.id}`}>https://fichamento.online/fichamentos/{ entry.id }</a></p>
         </div>
+
+        <EntryControls entry={entry} />
       </section>
     )
   }

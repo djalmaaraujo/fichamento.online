@@ -1,6 +1,6 @@
 {
   "id": "auth",
-  "image": "wedeploy/auth:latest",
+  "image": "wedeploy/auth:2.0.0",
   "cpu": 0.2,
   "memory": 100
 }

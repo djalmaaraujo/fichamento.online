@@ -33,25 +33,28 @@ class EntryList extends Component {
     return <Entry
       data={item}
       key={key}
-      id={key}
+      id={item.id}
       isLast={key === this.state.entries.length-1}
       _viewEntry={this._viewEntry.bind(this)}
     />
   }
 
+
   render() {
-    const hasNoEntries = (this.state.loaded && this.state.entries.length === 0)
+    const hasEntries = () => {
+      return this.state.loaded && (this.state.entries && (this.state.entries.length > 0))
+    }
 
     if (this.state.redirectTo)
       return (<Redirect to={{ pathname: this.state.redirectTo }}/>)
 
     return (
       <div>
-        { !this.state.entries && <Spinner /> }
-        { this.state.entries && <p className="text-center">Listando <strong>{this.state.entries.length}</strong> fichamento(s)</p> }
+        { !this.state.loaded && <Spinner /> }
+        { hasEntries() && <p className="text-center">Listando <strong>{this.state.entries.length}</strong> fichamento(s)</p> }
         <div className="card__content">
-          { this.state.entries && this.state.entries.map(this._renderEntry) }
-          { (hasNoEntries) && <NoEntriesFound _newEntry={this._newEntry.bind(this)} />}
+          { hasEntries() && this.state.entries.map(this._renderEntry) }
+          { !hasEntries() && <NoEntriesFound _newEntry={this._newEntry.bind(this)} />}
         </div>
       </div>
     )
