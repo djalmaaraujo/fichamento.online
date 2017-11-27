@@ -42,7 +42,7 @@ const ApiService = {
         return reject(new Error('invalid session'))
       }
 
-      WeDeployDataClient.delete(`entries/${entry.id}`)
+      resolve(WeDeployDataClient.delete(`entries/${entry.id}`))
     })
   }
 }

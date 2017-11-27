@@ -10,22 +10,22 @@ class EntryNew extends Component {
     super(props)
 
     this.state = {
-      title: '',
-      ref_author: '',
-      ref_year: '',
-      ref_type: '',
-      ref_country: '',
-      ref_city: '',
-      ref_translate: '',
-      ref_editor: '',
-      ref_pages: '',
-      ref_volumn: '',
-      ref_edition: '',
-      my_comments: '',
-      methodology_sample: '',
-      methodology_data_collect: '',
-      methodology_data_analysis: '',
-      thematic: ''
+      title: 'Meu novo style',
+      ref_author: 'Djalma Araujo',
+      ref_year: '2017',
+      ref_type: 'artigo',
+      ref_country: 'Brasil',
+      ref_city: 'Recife',
+      ref_translate: 'Herbert Richards',
+      ref_editor: 'Pragma',
+      ref_pages: '1, 2',
+      ref_volumn: '2',
+      ref_edition: '10',
+      my_comments: "Eu acho que ta muito legal.... \n e pa e brei.",
+      methodology_sample: 'Realism grenade Legba dead paranoid singularity skyscraper alcohol sub-orbital BASE jump city into shoes Shibuya engine boat. Weathered free-market franchise fetishism convenience store car footage order-flow shanty town kanji market into. Rebar nano-Tokyo render-farm warehouse augmented reality computer sensory Shibuya math-lights. Post-lights tank-traps augmented reality meta-drone garage boat shoes pen corporation skyscraper motion ablative sentient. ',
+      methodology_data_collect: 'Jeans tanto corporation dome shanty town assault smart-military-grade nodality woman receding bridge Shibuya. Drugs spook motion shrine DIY construct camera BASE jump otaku man office. Artisanal weathered fluidity face forwards tower receding youtube film geodesic carbon cyber-industrial grade saturation point. Tanto concrete ablative urban alcohol render-farm realism bomb papier-mache bicycle. Bicycle warehouse wristwatch cartel shanty town city tiger-team singularity jeans drugs digital spook nodality chrome smart-systema. Systema-space vehicle advert meta-neural youtube. Shanty town office fluidity A.I. voodoo god camera RAF semiotics knife grenade geodesic Kowloon 8-bit gang. ',
+      methodology_data_analysis: 'Marketing sub-orbital rain Shibuya bicycle-ware warehouse. Towards neon ablative cyber-3D-printed rebar singularity pen carbon wristwatch systemic sentient construct monofilament. Nodal point digital saturation point 8-bit city Kowloon towards shanty town cyber-drone pistol smart-otaku. Narrative girl assault systema corrupted shoes 3D-printed rain weathered katana silent concrete face forwards savant. ',
+      thematic: 'A tematica é tal e qual'
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -50,8 +50,8 @@ class EntryNew extends Component {
     event.preventDefault()
 
     ApiService.add(event, this.state)
-      .then((response) => {
-        console.log('response', response)
+      .then((entry) => {
+        this.setState({redirectTo: `/fichamentos/${entry.id}`})
       })
       .catch((error) => {
         alert('Não foi possível adicionar no momento, favor atualizar a página atual e tentar novamente')
