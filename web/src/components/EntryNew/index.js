@@ -51,7 +51,7 @@ class EntryNew extends Component {
 
     ApiService.add(event, this.state)
       .then((entry) => {
-        this.setState({redirectTo(`/fichamentos/${entry.id}`)
+        this.setState({redirectTo: `/fichamentos/${entry.id}`})
       })
       .catch((error) => {
         alert('Não foi possível adicionar no momento, favor atualizar a página atual e tentar novamente')
